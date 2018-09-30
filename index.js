@@ -57,4 +57,17 @@ client.on('message', async (message) => {
     }
 });
 client.login(token);
+const delay = 60000;
+setInterval(() => {
+    const toJson = JSON.stringify(servers, (key, value) => {
+        if (key === 'dispatcher') {
+            return null;
+        } else if (key === 'playing') {
+            return false;
+        }
+
+        return value;
+    });
+    fs.writeFileSync('servers.json', toJson);
+}, delay)
 module.exports.client = client;
