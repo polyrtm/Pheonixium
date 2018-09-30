@@ -1,11 +1,12 @@
-const level = require('../level.json');
-const Discord = require('discord.js');
+const Discord = require('discord.js')
+
 module.exports = {
     'aliases': ['xp'],
     'description': 'Gets level/xp of selected user.',
     execute (message) {
         /* eslint-disable-next-line no-magic-numbers */
-        const user = message.mentions.members.first() || message.member;
+        const level = require('../level.json') // So you could save 'setlevel' command stuff
+        const user = message.mentions.members.first() || message.member
         if (!level[message.guild.id]) {
             level[message.guild.id] = {}
         }
