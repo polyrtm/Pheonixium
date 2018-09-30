@@ -53,5 +53,5 @@ module.exports = {
         });
     },
     'name': 'help',
-    'usage': 'help'
+    'usage': 'help [command]'
 };
