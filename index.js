@@ -16,6 +16,12 @@ try {
 } catch (error) {
     servers = {};
 }
+module.exports.setServers = (object) => {
+    servers = object;
+
+    return servers;
+}
+module.exports.getServers = () => servers;
 client.on('ready', () => {
     client.user.setActivity('Botting...');
 });
