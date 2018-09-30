@@ -41,23 +41,22 @@ client.on('message', (msg) => {
 })
 
 module.exports = {
-    'aliases': ['xp'],
-    'description': 'Gets level/xp of selected user.',
-    execute (msg, args) {
-        /* eslint-disable-next-line no-magic-numbers */
-        const userMentioned = (/([0-9]{5,})/u).test(args.join(' ')) ? args.join(' ').match(/([0-9]{5,})/u)[1] : msg.author.id
-        msg.guild.members.fetch(userMentioned).then((tUser) => {
-            const emb = new Discord.RichEmbed().
-                setColor('#f4c842').
-                setTitle(`${tUser.user.username} Level Info:`).
-                setThumbnail(tUser.user.avatarURL).
-                addField('Level', `${level[msg.guild.id][tUser.id].level}`, true).
-                /* eslint-disable-next-line no-magic-numbers */
-                addField('Xp', `[**${level[msg.guild.id][tUser.id].xp}**/**${level[msg.guild.id][tUser.id] * 250}**]`, true).
-                setFooter('Pheonixium', client.user.avatarURL)
-            msg.channel.send(emb)
-        })
-    },
-    'name': 'level',
-    'usage': 'level [mention/id]'
+  description: 'Gets level/xp of selected user.',
+  aliases: ['xp'],
+  name: 'level',
+  usage: 'level [mention/id]',
+  async execute(msg, args) {
+    let userMentioned = /([0-9]{5,})/.test(args.join(' ')) ? args.join(' ').match(/([0-9]{5,})/)[1] : msg.author.id
+    msg.guild.members.fetch(userMentioned).then((tUser) => {
+      let emb = new Discord.RichEmbed()
+       .setColor(`#f4c842`)
+       .setTitle(`${tUser.user.username} Level Info:`)
+       .setThumbnail(tUser.user.avatarURL)
+       .addField(`Level`, `${level[msg.guild.id][tUser.id].level}`, true)
+       .addField(`Xp`, `[**${level[msg.guild.id][tUser.id].xp}**/**${level[msg.guild.id][tUser.id]*250}**]`, true)
+       .setFooter('Pheonixium', Client.user.avatarURL)
+      msg.channel.send(emb)
+    })
+  }
 }
+
