@@ -29,13 +29,13 @@ client.on('message', async (message) => {
     if (!message.guild) {
         if (!servers[`channel${message.channel.id}`]) {
             servers[`channel${message.channel.id}`] = {
-                'prefix': ';'
+                'prefix': '$'
             };
         }
     } else if (!servers[message.guild.id]) {
         servers[message.guild.id] = {
             'playing': false,
-            'prefix': ';',
+            'prefix': '$',
             'queue': []
         };
     }
