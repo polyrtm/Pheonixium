@@ -41,7 +41,7 @@ module.exports = {
       let emb = new Discord.RichEmbed()
        .setColor(`#f4c842`)
        .setTitle(`${tUser.user.username} Level Info:`)
-       .setThumbnail(tUser.user.avatarURL})
+       .setThumbnail(tUser.user.avatarURL)
        .addField(`Level`, `${level[msg.guild.id][tUser.id].level}`, true)
        .addField(`Xp`, `[**${level[msg.guild.id][tUser.id].xp}**/**${level[msg.guild.id][tUser.id]*250}**]`, true)
        .setFooter('Pheonixium', Client.user.avatarURL)
