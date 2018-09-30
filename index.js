@@ -35,9 +35,9 @@ client.on('message', async (message) => {
     }
     let prefix;
     try {
-        ({prefix} = servers[message.guild.id].prefix);
+        ({prefix} = servers[message.guild.id]);
     } catch (error) {
-        ({prefix} = servers[`channel${message.channel.id}`].prefix);
+        ({prefix} = servers[`channel${message.channel.id}`]);
     }
     if (message.content.startsWith(prefix) && !message.author.bot) {
         const args = message.content.slice(prefix.length).split(/\s+/u);
