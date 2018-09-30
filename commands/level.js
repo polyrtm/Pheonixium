@@ -1,4 +1,4 @@
-const {Client} = require('../index.js')
+const Client = require('../index.js').client // I wrote client with capitalization and too lazy to fix mistake, so gonna go quick way
 const level = require('./level.json')
 
 Client.on('message', (msg) => {
