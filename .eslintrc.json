@@ -56,7 +56,7 @@
         "generator-star-spacing": "error",
         "global-require": "off",
         "guard-for-in": "error",
-        "handle-callback-err": "error",
+        "handle-callback-err": "off",
         "id-blacklist": "error",
         "id-length": "error",
         "id-match": "error",
@@ -95,7 +95,7 @@
         "new-cap": "error",
         "new-parens": "error",
         "newline-after-var": [
-            "error",
+            "off",
             "never"
         ],
         "newline-before-return": "error",
