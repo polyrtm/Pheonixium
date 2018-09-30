@@ -19,9 +19,9 @@ module.exports = {
                 /* eslint-disable-next-line no-magic-numbers */
                 [server.prefix] = args;
             }
-            try {
+            if (servers[message.guild.id]) {
                 servers[message.guild.id] = server;
-            } catch (err) {
+            } else {
                 servers[`channel${message.channel.id}`] = server;
             }
             functions.setServers(servers);
