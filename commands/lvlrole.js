@@ -6,8 +6,8 @@ module.exports = {
         if (msg.member.hasPermission('MANAGE_ROLES')) {
             /* eslint-disable prefer-destructuring, no-magic-numbers */
             if ((/([0-9]+)/u).test(args[0]) && (/([0-9]+)/u).test(args[1])) {
-                const [, lvlToReach] = args[0].match(/([0-9]+)/u)[1];
-                const [, levelRole] = args[1].match(/([0-9]+)/u)[1];
+                const [, lvlToReach] = args[0].match(/([0-9]+)/u);
+                const [, levelRole] = args[1].match(/([0-9]+)/u);
                 /* eslint-enable prefer-destructuring, no-magic-numbers */
 
                 if (msg.guild.roles.exists('id', levelRole)) {
