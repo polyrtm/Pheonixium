@@ -16,7 +16,18 @@ module.exports = {
                     if (!servers[msg.guild.id].lvlroles) {
                         servers[msg.guild.id].lvlroles = {};
                     }
-
+                    const level = require('../level.json')
+                    msg.guild.members.tap((usr) => {
+                        if (!level[msg.guild.id][usr.id]) {
+                            level[msg.guild.id][usr.id] = {
+                                'level': 1,
+                                'xp': 0
+                            }
+                        }
+                        if (level[msg.guild.id][usr.id].level >= lvlToReach) {
+                            usr.addRole(levelRole);
+                        }
+                    })
                     servers[msg.guild.id].lvlroles[lvlToReach] = levelRole;
                     index.setServers(servers);
                     msg.channel.send(`:white_check_mark: Changed Level **${lvlToReach}** role to **${msg.guild.roles.get(levelRole).name}**.`);
