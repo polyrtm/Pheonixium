@@ -23,6 +23,7 @@ module.exports.setServers = (object) => {
     return servers;
 }
 module.exports.getServers = () => servers;
+
 client.on('ready', () => {
     client.user.setActivity('Botting...');
 });
