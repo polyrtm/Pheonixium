@@ -19,6 +19,9 @@
   "homepage": "https://github.com/JackFly26/Pheonixium#readme",
   "dependencies": {
     "discord.js": "^11.4.2",
-    "node-opus": "^0.3.0"
+    "node-opus": "^0.3.0",
+    "random.cat-meow": "^1.0.0",
+    "youtube-api-v3-search": "^1.0.2",
+    "ytdl-core": "^0.26.0"
   }
 }
