@@ -4,8 +4,8 @@ module.exports = {
     'aliases': ['xp'],
     'description': 'Gets level/xp of selected user.',
     execute (message) {
-        /* eslint-disable-next-line no-magic-numbers */
-        const level = require('../level.json') // So you could save 'setlevel' command stuff
+        // So you could save 'setlevel' command stuff
+        const level = require('../level.json')
         const user = message.mentions.members.first() || message.member
         if (!level[message.guild.id]) {
             level[message.guild.id] = {}
