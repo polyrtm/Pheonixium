@@ -47,6 +47,12 @@ client.on('message', async (message) => {
         if (currentXp + newXp >= nextLevel) {
             level[message.guild.id][message.author.id].xp = currentXp + newXp - nextLevel
             level[message.guild.id][message.author.id].level++
+            if(servers[message.guild.id].lvlroles[currentLevel+1]) {
+              if(message.guild.me.hasPermission('MANAGE_ROLES') && message.guild.roles.exists('id',servers[message.guild.id].lvlroles[currentLevel+1])) 
+{
+                message.member.addRole(servers[message.guild.id].lvlroles[currentLevel+1], 'Level up role')
+              }
+            }
             const emb = new Discord.RichEmbed().
                 setColor('#f4c842').
                 setThumbnail(message.author.avatarURL).

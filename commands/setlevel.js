@@ -1,4 +1,6 @@
 const Discord = require('discord.js')
+const fs = require('fs')
+
 module.exports = {
   'aliases': ['setxp'],
   'description': 'Manages xp/level',
