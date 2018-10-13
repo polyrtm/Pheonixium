@@ -12,6 +12,8 @@ for (const file of commandFiles) {
     client.commands.set(command.name, command);
 }
 let servers;
+let economy
+try {economy = require('./economy.json')} catch(err) {economy = {}}
 try {
     servers = JSON.parse(fs.readFileSync('servers.json'));
 } catch (error) {
@@ -25,7 +27,7 @@ module.exports.setServers = (object) => {
 module.exports.getServers = () => servers;
 
 client.on('ready', () => {
-    client.user.setActivity('Botting...');
+    client.user.setActivity('Botting...')
 });
 client.on('message', async (message) => {
     if (!message.author.bot) {
@@ -122,3 +124,19 @@ setInterval(() => {
 }, delay)
 client.login(token);
 module.exports.client = client;
+const dailyCD = {}
+module.exports.getDailyCD = () => dailyCD;
+const cooldown = 86400000;
+module.exports.setDailyCD = (userID) => {
+    dailyCD[userID] = true
+    setTimeout(() => {
+        Reflect.deleteProperty(dailyCD, userID)
+    }, cooldown)
+}
+module.exports.getEconomy = () => {
+    return economy
+}
+module.exports.setEconomy = (newEconomy) => {
+    economy = newEconomy
+    fs.writeFileSync('./economy.json', JSON.stringify(newEconomy))
+}
